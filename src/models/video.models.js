@@ -6,7 +6,7 @@ const videoSchema = new Schema(
       type: String,
       required: true,
     },
-    tumbnail: {
+    thumbnail: {
       type: String,
       required: true,
     },
@@ -36,13 +36,13 @@ const videoSchema = new Schema(
     },
   },
   {
-    timestaamps: true,
+    timestamps: true,
   }
 );
 
 videoSchema.plugin(mongooseAggregatePaginate);
 
-export const Video = mongoosePopulatedDocumentMarker.model(
+export const Video = mongoose.model(
   "Video",
   videoSchema
 );

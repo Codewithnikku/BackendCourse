@@ -20,8 +20,10 @@ app.use(
     limit: "15kb",
   })
 );
-app.use(
-    express.static("public")
-);
-app.use( cookieParser() );
+app.use(express.static("public"));
+app.use(cookieParser());
+
+import userRouter from "./routes/User.routes.js";
+app.use("/api/users", userRouter);
+
 export { app };

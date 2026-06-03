@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 const userSchema = new Schema(
   {
     userName: {
-      type: string,
+      type: String,
       required: true,
       unique: true,
       lowercase: true,
@@ -13,25 +13,24 @@ const userSchema = new Schema(
       index: true,
     },
     email: {
-      type: string,
+      type: String,
       required: true,
       unique: true,
       lowercase: true,
       trim: true,
     },
     fullName: {
-      type: string,
+      type: String,
       required: true,
-      unique: true,
       trim: true,
       index: true,
     },
     avatar: {
-      type: string,
+      type: String,
       required: true,
     },
     coverImage: {
-      type: string,
+      type: String,
     },
     watchHistory: [
       {
@@ -40,11 +39,11 @@ const userSchema = new Schema(
       },
     ],
     password: {
-      type: string,
+      type: String,
       required: [true, "Password is required"],
     },
     refreshToken: {
-      type: string,
+      type: String,
     },
   },
   { timestamps: true }
@@ -53,7 +52,7 @@ const userSchema = new Schema(
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
-  this.password = bcrypt = pcrypt.hash(this.passsword, 10);
+  this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
@@ -67,7 +66,7 @@ userSchema.methods.generateAccessToken = function () {
       _id: this._id,
       email: this.email,
       userName: this.userName,
-      fullName: this.fullname,
+      fullName: this.fullName,
     },
     process.env.ACCESS_TOKEN_SECRET,
     { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
