@@ -1,0 +1,5 @@
+$kind: collection
+name: Backend-3 API
+variables:
+  - key: baseUrl
+    value: 'http://localhost:8000'

@@ -1,0 +1,14 @@
+name: Backend-3
+values:
+  - key: baseUrl
+    value: 'http://localhost:8000'
+    enabled: true
+    type: default
+  - key: accessToken
+    value: ''
+    enabled: true
+    type: secret
+  - key: refreshToken
+    value: ''
+    enabled: true
+    type: secret

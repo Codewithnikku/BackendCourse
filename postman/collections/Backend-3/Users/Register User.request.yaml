@@ -1,0 +1,28 @@
+$kind: http-request
+method: POST
+url: '{{baseUrl}}/api/users/register'
+order: 1000
+description: Registers a new user. Requires avatar image upload. Cover image is optional.
+body:
+  type: formdata
+  content:
+    - key: fullName
+      type: text
+      value: John Doe
+    - key: email
+      type: text
+      value: john@example.com
+    - key: userName
+      type: text
+      value: johndoe
+    - key: password
+      type: text
+      value: password123
+    - key: avatar
+      type: file
+      src: ''
+      description: Required. User avatar image
+    - key: coverImage
+      type: file
+      src: ''
+      description: Optional. Cover image
